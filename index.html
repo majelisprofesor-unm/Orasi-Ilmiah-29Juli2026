@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orasi Ilmiah - 30 Juli 2026 | UNM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --unm-gold: #C9A227;          /* Emas utama — lebih soft */
+      --unm-gold-dark: #9A7B1A;     /* Emas gelap */
+      --unm-gold-light: #E8D48B;    /* Emas soft */
+      --bg-main: #2C2416;           /* Coklat gelap hangat */
+      --sidebar-bg: #1F1A12;        /* Sidebar lebih gelap */
+    }
+
+    body {
+      background: #2C2416;          /* Latar utama gelap keemasan */
+      min-height: 100vh;
+      display: flex;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #f0e6d0;
+    }
+
+    /* ========== SIDEBAR ========== */
+    .sidebar {
+      width: 300px;
+      background: var(--sidebar-bg);
+      border-right: 2px solid var(--unm-gold-dark);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      background: linear-gradient(145deg, #3A2F1C, #1F1A12);
+      border-bottom: 2px solid var(--unm-gold-dark);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      color: var(--unm-gold-light);
+    }
+
+    .book-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+    }
+
+    .book-item {
+      padding: 11px 14px;
+      margin-bottom: 7px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.65rem;          /* ← lebih kecil */
+      line-height: 1.35;
+      border: 1px solid transparent;
+      background: rgba(201, 162, 39, 0.08);
+      color: #e8d9b0;
+    }
+
+    .book-item:hover {
+      background: rgba(201, 162, 39, 0.18);
+      border-color: var(--unm-gold-dark);
+    }
+
+    .book-item.active {
+      background: var(--unm-gold);
+      color: #1F1A12;
+      font-weight: 600;
+      border-color: var(--unm-gold-light);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+
+    /* ========== MAIN AREA ========== */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background: #2C2416;
+    }
+
+    .main-header {
+      padding: 14px 24px;
+      background: #1F1A12;
+      border-bottom: 2px solid var(--unm-gold-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--unm-gold-light);
+    }
+
+    .main-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    #book {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: calc(100vh - 60px);
+      position: relative;
+
+      --fb-bg: transparent;
+      --fb-paper: #fffaf0;
+      --fb-control-bg: rgba(31, 26, 18, 0.9);
+      --fb-control-fg: #E8D48B;
+      --fb-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ========== WELCOME SCREEN ========== */
+    .welcome {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      z-index: 10;
+      background: radial-gradient(ellipse at center, #3A2F1C 0%, #2C2416 70%);
+    }
+
+    .welcome.hidden {
+      display: none;
+    }
+
+    .welcome img {
+      width: 140px;
+      height: auto;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
+    }
+
+    .welcome h1 {
+      font-size: 1.55rem;
+      color: var(--unm-gold-light);
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .welcome p {
+      font-size: 1.05rem;
+      color: #cbb98a;
+      max-width: 420px;
+      line-height: 1.5;
+    }
+
+    .welcome .hint {
+      margin-top: 28px;
+      font-size: 0.9rem;
+      color: #e8d9b0;
+      background: rgba(201, 162, 39, 0.15);
+      padding: 9px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--unm-gold-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 240px;
+      }
+      .main { height: auto; min-height: 65vh; }
+      #book { height: 65vh; }
+      .welcome h1 { font-size: 1.25rem; }
+      .welcome img { width: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      📚 Orasi Ilmiah<br>
+      Pengukuhan Profesor UNM<br>
+      <small style="font-weight:400; opacity:0.85">30 Juli 2026</small>
+    </div>
+    <div class="book-list" id="bookList">
+      <!-- diisi otomatis -->
+    </div>
+  </aside>
+
+  <!-- ========== MAIN ========== -->
+  <main class="main">
+    <div class="main-header">
+      <h2 id="currentTitle">Selamat Datang</h2>
+      <span style="font-size: 0.85rem; opacity: 0.75;">Geser pojok halaman untuk membalik</span>
+    </div>
+
+    <div id="book">
+      <!-- Welcome screen -->
+      <div class="welcome" id="welcomeScreen">
+        <img src="https://unm.ac.id/wp-content/uploads/2021/07/logo-unm.png" 
+             alt="Logo Universitas Negeri Makassar"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/id/thumb/8/8e/Logo_UNM.png/200px-Logo_UNM.png'">
+        
+        <h1>Orasi Ilmiah<br>Pengukuhan Profesor</h1>
+        <p>Universitas Negeri Makassar<br>30 Juli 2026</p>
+        <div class="hint">← Pilih naskah orasi di sebelah kiri untuk mulai membaca</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Library -->
+  <script src="https://cdn.jsdelivr.net/gh/SympleNZ/PDFlipbook@main/pdflipbook.js"></script>
+
+  <script>
+    const books = [
+      { title: "Sultan - Pembelajaran Literasi Kritis Sebagai Jalan Pemberdayaan: Mewujudkan Peserta Didik Menjadi Pembaca Berdaulat Di Era Infodemik",  file: "sultan.pdf" },
+      { title: "Maemuna Muhayyang  - Eksistensi Dan Dinamika Honorifik Hi dalam Ekologi Kesantunan Masyarakat Bugis Tala, Pangkep",file: "maemuna.pdf" },
+      { title: "Kamaruddin - Neuro-Semiotic Pedagogy: Rekonstruksi Pedagogi Humanistik Dalam Menjaga Kedaulatan Makna di Era Kecerdasan Artifisial",file: "kamaruddin.pdf" },
+      { title: "Erma Sahabuddin - Ekopedagogi Digital dan Transformasi Kesadaran Ekologis Untuk Membangun Generasi Berkelanjutan",file: "erma.pdf" },
+      { title: "Widya Karmila Sari Achmad - Pedagogi Sosial Transformatif Dalam Pembelajaran IPS Sekolah Dasar: Membangun Generasi Berkarakter, Berbudaya, Dan Berwawasan Global",file: "widya.pdf" }
+    ];
+
+    let currentBook = null;
+    const bookListEl = document.getElementById('bookList');
+    const currentTitleEl = document.getElementById('currentTitle');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+
+    books.forEach((book, index) => {
+      const item = document.createElement('div');
+      item.className = 'book-item';
+      item.textContent = book.title;
+      item.dataset.index = index;
+
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.book-item').forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+        loadBook(book);
+      });
+
+      bookListEl.appendChild(item);
+    });
+
+    function loadBook(book) {
+      welcomeScreen.classList.add('hidden');
+
+      if (currentBook) {
+        currentBook.destroy();
+        currentBook = null;
+      }
+
+      currentTitleEl.textContent = book.title;
+
+      currentBook = PDFlipbook.create(document.getElementById('book'), {
+        url: book.file,
+        duration: 550,
+        cornerFold: true,
+        displayMode: 'auto',
+        controls: true,
+        arrows: true,
+        pageNumbers: true,
+        zoomSteps: [1, 1.5, 2, 2.5],
+        shadow: 'always'
+      });
+    }
+  </script>
+</body>
+</html>
+
+
